@@ -54,8 +54,16 @@
                           <td>{{$cls->JK}}</td>
 						  <td>{{$cls->rombel}}</td>
 						  <td>{{$cls->rayon}}</td>
-		<td><a href="#" class="btn btn-danger">Hapus</a> 
-			<a href="/edit_siswa" class="btn btn-info">Edit</a>
+		<td> 
+
+		<a href="/edit_siswa" class="btn btn-info">Edit</a>
+		<form action="siswaX/{{$cls->nis}}" method="post" class="d-inline">
+                              @method('delete')
+                              @csrf
+                            
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+		
 		</td>
 	</tr>
 	@endforeach

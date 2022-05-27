@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReadingController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\xController;
+use App\Http\Controllers\xiController;
+use App\Http\Controllers\xiiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,15 +28,17 @@ Route::get('/adminsiswa', function () {
 });
 
 Route::get('/Xexport', 'App\Http\Controllers\xController@Xexport')->name('Xexport');
+Route::get('/Xiexport', 'App\Http\Controllers\xiController@Xiexport')->name('Xiexport');
+Route::get('/Xiiexport', 'App\Http\Controllers\xiiController@Xexport')->name('Xiiexport');
 Route::post('/Ximport', 'App\Http\Controllers\xController@Ximport')->name('Ximport');
+Route::post('/XiImport', 'App\Http\Controllers\xiController@XiImport')->name('XiImport');
+Route::post('/XiiImport', 'App\Http\Controllers\xiiController@XiiImport')->name('XiiImport');
 Route::get('/siswaX', 'App\Http\Controllers\xController@index');
+Route::post('/siswaX', 'App\Http\Controllers\xController@destroy');
+Route::get('/siswaXI', 'App\Http\Controllers\xiController@index');
+Route::get('/siswaXII', 'App\Http\Controllers\xiiController@index');
 
-Route::get('/siswaXI', function () {
-    return view('admin.content.dataXI');
-});
-Route::get('/siswaXII', function () {
-    return view('admin.content.dataXII');
-});
+
 Route::get('/form', function () {
     return view('admin.content.form');
 });

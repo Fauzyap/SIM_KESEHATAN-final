@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\X;
-use App\Exports\XExport;
-use App\Imports\XImport;
 use Illuminate\Http\Request;
+use App\Models\XII;
+use App\Exports\XiiExport;
+use App\Imports\XiiImport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 
-class xController extends Controller
+class xiiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +19,16 @@ class xController extends Controller
      */
     public function index()
     {
-        $kelasX=X::all();        
-        return view('admin/content/dataX' , compact('kelasX'));
+        $kelasXII=XII::all();        
+        return view('admin/content/dataXII' , compact('kelasXII'));
     }
 
-    public function Xexport(){
-        return Excel::download(new XExport, 'datasiswaX.xlsx');
+    public function Xiiexport(){
+        return Excel::download(new XExport, 'datasiswaXII.xlsx');
     }
 
 
-    
-
-
-    public function Ximport(Request $request){
+    public function XiiImport(Request $request){
         
         $this->validate($request, [
             'file' => 'required|mimes:csv,xls,xlsx'
@@ -44,21 +41,20 @@ class xController extends Controller
         $nama_file = rand().$file->getClientOriginalName();
      
         // upload ke folder file_siswa di dalam folder public
-        $file->move('DatakelasX',$nama_file);
+        $file->move('DatakelasXII',$nama_file);
      
         // import data
-        Excel::import(new XImport, public_path('/DatakelasX/'.$nama_file));
+        Excel::import(new XiiImport, public_path('/DatakelasXII/'.$nama_file));
      
         // notifikasi dengan session
         Session::flash('sukses','Data Siswa Berhasil Diimport!');
      
         // alihkan halaman kembali
-        return redirect('/siswaX');
+        return redirect('/siswaXII');
 
     }
 
 
-  
     /**
      * Show the form for creating a new resource.
      *
@@ -120,12 +116,8 @@ class xController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-  
-    public function destroy(X $kelasX)
+    public function destroy($id)
     {
-        $kelasX->delete();
-
-        return redirect()->route('admin.index')
-                        ->with('success', 'berhasil hapus!');
+        //
     }
 }

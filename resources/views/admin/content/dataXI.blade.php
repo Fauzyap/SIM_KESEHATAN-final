@@ -8,7 +8,7 @@
 		<div class="section-header">
 <body>
 	
-	<h1>Data Siswa Kelas XI</h1>
+	<h1>Data Siswa Kelas X</h1>
                    
                         <div class="container justify-content-center ">
                         <div class="btn-group" role="group" aria-label="Basic example">
@@ -22,9 +22,16 @@
     
 		</div>
         
-        
+		<form enctype="multipart/form-data" method="post" action="{{route('XiImport')}}"  >
+		@csrf
         <div class="section-body">
-		<a href="/form" class="btn btn-info ml-2">Import Data</a>
+		<input type="file" name="file" required>
+		<button type="submit" class="btn btn-info ml-2" >
+		Import Data
+		</button>
+		</form>
+	
+		<a href="{{ route('Xiexport')}}" class="btn btn-info ml-2">Export Data</a>
 		<br>	
 		<br>
 
@@ -40,20 +47,26 @@
 			</tr>
 	</thead>
 	<tbody>	
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-        <td></td>
+		@foreach ($kelasXI as $cls)
+		<tr>
+                          <td>{{$cls->nis}}</td>
+                          <td>{{$cls->nama}}</td>
+                          <td>{{$cls->JK}}</td>
+						  <td>{{$cls->rombel}}</td>
+						  <td>{{$cls->rayon}}</td>
 		<td><a href="#" class="btn btn-danger">Hapus</a> 
 			<a href="/edit_siswa" class="btn btn-info">Edit</a>
 		</td>
-
+	</tr>
+	@endforeach
 	</tbody>
 	</table>
 
+
+	
+
     </div>
-    
+  
 		
         
 	</div>
