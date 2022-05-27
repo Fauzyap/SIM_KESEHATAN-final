@@ -24,12 +24,13 @@
 		<div class="section-body">
 	
 	<!-- Buat sebuah tag form dan arahkan action nya ke controller ini lagi -->
-	<form method="post" action="" enctype="multipart/form-data">
+	<form method="post" action="{{ route('importdatasiswa') }}" enctype="multipart/form-data">
 
 		<!-- 
 		-- Buat sebuah input type file
 		-- class pull-left berfungsi agar file input berada di sebelah kiri
 		-->
+		{{ crsf_field() }}
 		<input type="file" name="file" class="form-control ">
 		
 		<!--
@@ -37,7 +38,7 @@
 		-->
 		<br>	
 
-		<input type="submit" name="preview" value="Preview" class="btn btn-info">
+		<button type="submit" name="preview" value="Preview" class="btn btn-info">
 		<br>	
 		<br>	
 		

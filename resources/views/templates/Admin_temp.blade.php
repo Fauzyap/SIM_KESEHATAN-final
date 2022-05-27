@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -77,10 +77,10 @@
         <div class="container justify-content-center ">
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a href="/"  class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+              <a href="/admin"  class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-              <a href="/siswa" class="nav-link"><i class="far ion-person-add"></i><span>Data Siswa</span></a>
+              <a href="/adminsiswa" class="nav-link"><i class="far ion-person-add"></i><span>Data Siswa</span></a>
             </li>
             <li class="nav-item">
               <a href="/input_sakit" class="nav-link"><i class="far ion-ios-medkit-outline"></i><span>Data Siswa Sakit</span></a>

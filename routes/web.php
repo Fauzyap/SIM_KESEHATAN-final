@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReadingController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\xController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+Route::resource('admin', ReadingController::class);
+Route::resource('siswa', SiswaController::class);
 
-Route::get('/siswa', function () {
+
+
+Route::get('/adminsiswa', function () {
     return view('admin.content.view');
 });
 
+Route::get('/Xexport', 'App\Http\Controllers\xController@Xexport')->name('Xexport');
+Route::post('/Ximport', 'App\Http\Controllers\xController@Ximport')->name('Ximport');
+Route::get('/siswaX', 'App\Http\Controllers\xController@index');
+
+Route::get('/siswaXI', function () {
+    return view('admin.content.dataXI');
+});
+Route::get('/siswaXII', function () {
+    return view('admin.content.dataXII');
+});
 Route::get('/form', function () {
     return view('admin.content.form');
 });
@@ -53,10 +67,7 @@ Route::get('/laporan', function () {
     return view('admin.content.laporan');
 });
 
-Route::get('/dashboard_siswa', function () {
-    return view('siswa.dashboard');
-});
-
 Route::get('/siswa_imt', function () {
     return view('siswa.content.tambah_imt');
 });
+
